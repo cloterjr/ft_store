@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <product-carousel *ngFor="let categorie of categories" [carouselTitle]="categorie.name"></product-carousel>
+<div class="row search-results"
+		    infiniteScroll
+		    [infiniteScrollDistance]="2"
+		    [infiniteScrollThrottle]="50"
+		    (scrolled)="onScroll()">
+  <div *ngIf="products.length > 0 && categorie" class="categorie-title"><h1>{{ categorie.name }}</h1></div>
+  <div class="col-xs-12 col-md-3 product-detail" *ngFor="let product of products">
+      <div><img class="img img-responsive img-product" src="assets/images/sports/sports_1_1.jpg" (click)="viewProductDetail(product.code)"/></div>
+      <div><h5>{{product.name}}</h5></div>
+      <div><label>{{product.price.value | currency:'USD':true:'1.2-2'}}</label></div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row" *ngIf="products.length == 0" >
+  <div class="col-xs-12">
+    No result(s) found.
+  </div>
+</div>
+</div>
