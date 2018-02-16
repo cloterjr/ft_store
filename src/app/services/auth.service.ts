@@ -17,15 +17,17 @@ export class AuthService {
   login(user) {
     const loginHeaders = new HttpHeaders({
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ZmFzdHRyYWNrOjU0NzQ5MA=='
     });
-    const body = `username=${user.username}&password=${user.password}`;
-    return this.apiService.post(this.config.login_url, JSON.stringify(user), loginHeaders).map((res) => {
+
+    const endpoint: string = this.config.login_url.concat(`?grant_type=password&username=${user.username}&password=${user.password}`);
+    return this.apiService.post(endpoint, JSON.stringify(user), loginHeaders).map((res) => {
       console.log(res);
-      if(res.access_token){
-        localStorage.setItem("access_token", res.access_token);
+      if (res.access_token) {
+        localStorage.setItem('access_token', res.access_token);
       }
-      console.log("Login success");
+      console.log('Login success');
       this.userService.getMyInfo().subscribe();
     });
   }

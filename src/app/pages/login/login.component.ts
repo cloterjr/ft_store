@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { UserService, AuthService } from '../../services';
 
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/SUbject';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-login',

@@ -6,13 +6,13 @@ export class ConfigService {
 
   private _api_url = environment.apiUrl + '/api';
 
-  private _auth_url = environment.apiUrl + '/auth';
+  private _auth_url = environment.apiHybris + '/api/oauth';
 
   private _api_hybris = environment.apiHybris + '/rest/v2/electronics/products';
 
   private _refresh_token_url = this._auth_url + '/refresh';
 
-  private _login_url = this._auth_url + '/login';
+  private _login_url = this._auth_url + '/token';
 
   private _logout_url = this._api_url + '/logout';
 
